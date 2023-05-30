@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -23,11 +24,12 @@ func getStores(link string) map[string]Store {
 	page := rod.New().MustConnect().MustPage(link)
 	defer page.MustClose()
 
-	locationList := page.MustElement(".base___3sH_T")
+	locationList := page.MustElement("[data-e2e=locationList]")
+
 	locations := locationList.MustElements(".base___3LiS9")
 
 	stores := make(map[string]Store)
-	for _, location := range locations[:30] {
+	for _, location := range locations[:35] {
 		address := location.MustElement("[data-e2e=address]").MustText()
 		storelink := location.MustElement("[data-e2e=cardLink]").MustProperty("href")
 
@@ -52,7 +54,7 @@ func main() {
 	browser := rod.New().MustConnect()
 	defer browser.MustClose()
 
-	pool := rod.NewPagePool(4)
+	pool := rod.NewPagePool(runtime.NumCPU())
 
 	create := func() *rod.Page {
 		return browser.MustIncognito().MustPage()
