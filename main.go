@@ -27,7 +27,7 @@ func getStores(link string) map[string]Store {
 	locations := locationList.MustElements(".base___3LiS9")
 
 	stores := make(map[string]Store)
-	for _, location := range locations[:33] {
+	for _, location := range locations[:30] {
 		address := location.MustElement("[data-e2e=address]").MustText()
 		storelink := location.MustElement("[data-e2e=cardLink]").MustProperty("href")
 
@@ -52,7 +52,7 @@ func main() {
 	browser := rod.New().MustConnect()
 	defer browser.MustClose()
 
-	pool := rod.NewPagePool(5)
+	pool := rod.NewPagePool(4)
 
 	create := func() *rod.Page {
 		return browser.MustIncognito().MustPage()
@@ -96,7 +96,7 @@ func main() {
 		storesArray = append(storesArray, store)
 	}
 
-	fileName := fmt.Sprintf("stores/stores_%v,json", time.Now().Unix())
+	fileName := fmt.Sprintf("stores/stores_%v.json", time.Now().Unix())
 	file, _ := json.MarshalIndent(storesArray, "", " ")
 	_ = os.WriteFile(fileName, file, 0644)
 	log.Printf("Scrape finished wrote file to stores/%v", fileName)
