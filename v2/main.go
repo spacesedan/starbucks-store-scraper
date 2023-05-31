@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/go-rod/rod"
+	"github.com/go-rod/rod/lib/launcher"
 	"github.com/go-rod/rod/lib/proto"
 )
 
@@ -23,20 +24,21 @@ const path = "stores"
 
 func main() {
 	var linkVar string
+	var headlessVar bool
 
 	flag.StringVar(&linkVar, "link", "", "Starbucks Store Locator Link to scrape")
+	flag.BoolVar(&headlessVar, "headless", true, "Choose whether to run this process using a headless browser; default is true")
 	flag.Parse()
 
 	if linkVar == "" {
 		log.Fatal("No link included; Terminating early")
 	}
 
+	var page *rod.Page
 	var stores []Store
 
-	// u := launcher.New().Headless(false).MustLaunch()
-
-	// page := rod.New().ControlURL(u).MustConnect().MustPage(linkVar)
-	page := rod.New().MustConnect().MustPage(linkVar)
+	u := launcher.New().Headless(headlessVar).MustLaunch()
+	page = rod.New().ControlURL(u).MustConnect().MustPage(linkVar)
 	defer page.Close()
 
 	log.Println("Starting scrape")
