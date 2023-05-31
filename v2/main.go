@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"html"
 	"log"
 	"os"
 	"strings"
@@ -15,9 +16,10 @@ import (
 )
 
 type Store struct {
-	Address     string
-	PhoneNumber string
-	StoreName   string
+	Address       string   `json:"address"`
+	PhoneNumber   string   `json:"phoneNumber"`
+	StoreName     string   `json:"storeName"`
+	StoreFeatures []string `json:"storeFeatures"`
 }
 
 const path = "stores"
@@ -56,11 +58,20 @@ func main() {
 		storeName := expandedLocationContent.MustElement("h2").MustText()
 		address := expandedLocationContent.MustElement(".gridItem").MustText()
 		phoneNumber := expandedLocationContent.MustElement("a").MustProperty("href").Str()
+		f := expandedLocationContent.MustElement("[data-e2e=store-features]")
+		features := f.MustElements("li")
+
+		var storeFeatures []string
+
+		for _, feature := range features {
+			storeFeatures = append(storeFeatures, feature.MustText())
+		}
 
 		storeInfo := Store{
-			Address:     address,
-			StoreName:   storeName,
-			PhoneNumber: strings.TrimPrefix(phoneNumber, "tel:"),
+			Address:       html.UnescapeString(address),
+			StoreName:     html.UnescapeString(storeName),
+			PhoneNumber:   strings.TrimPrefix(phoneNumber, "tel:"),
+			StoreFeatures: storeFeatures,
 		}
 
 		stores = append(stores, storeInfo)
@@ -80,8 +91,6 @@ func main() {
 	_ = os.WriteFile(fileName, file, 0644)
 
 	log.Printf("Scrape finished: output saved to %v", fileName)
-
-	// time.Sleep(1 * time.Hour)
 }
 
 func createStoresDirectory(path string) error {

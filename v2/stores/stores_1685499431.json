@@ -1,0 +1,91 @@
+[
+ {
+  "address": "1305 SE Tacoma Street\n13th \u0026 Tacoma (Sellwood)\nPortland, OR 97202",
+  "phoneNumber": "5032346020",
+  "storeName": "13th and Tacoma",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ },
+ {
+  "address": "6080 S Macadam\nPortland, OR 97239",
+  "phoneNumber": "5034521517",
+  "storeName": "Macadam Avenue",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ },
+ {
+  "address": "7421 SW Barbur Boulevard\nPortland, OR 97219",
+  "phoneNumber": "5032457540",
+  "storeName": "Barbur Blvd. \u0026 Terwilliger",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ },
+ {
+  "address": "7001 SE Milwaukee Ave\nPortland, OR 97202",
+  "phoneNumber": "5032309603",
+  "storeName": "Milwaukie \u0026 Bybee",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ },
+ {
+  "address": "7555 SW Barbur Blvd\nPortland, OR 97219",
+  "phoneNumber": "5034523000",
+  "storeName": "Fred Meyer Burlingame 40",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ },
+ {
+  "address": "8145 SW Barbur Blvd\nPortland, OR 97219",
+  "phoneNumber": "5034526212",
+  "storeName": "Safeway Portland 3136",
+  "storeFeatures": [
+   "In store"
+  ]
+ },
+ {
+  "address": "6326 SW Capitol Highway\nPortland, OR 97239",
+  "phoneNumber": "5039773638",
+  "storeName": "Hillsdale, OR",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ },
+ {
+  "address": "7737 SW Capitol Highway\nPortland, OR 97219",
+  "phoneNumber": "5032451961",
+  "storeName": "Multnomah",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ },
+ {
+  "address": "700 SW Campus Drive\nPortland, OR 97239",
+  "phoneNumber": "5034185350",
+  "storeName": "Doernbecher/Hospital",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ },
+ {
+  "address": "2730 S Moody Avenue\nOregon Health \u0026 Science University\nPortland, OR 97201",
+  "phoneNumber": "9718015552",
+  "storeName": "OHSU South Waterfront",
+  "storeFeatures": [
+   "Mobile Order and Pay",
+   "In store"
+  ]
+ }
+]
